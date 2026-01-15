@@ -2,7 +2,7 @@
 
 **Name:** Muhammad Fazreel Yusman bin Yusoff  
 
-This repository contains my solutions for the 99Tech Front-End Code Challenge - `Front-End`.
+This repository contains my solutions for the 99Tech Code Challenge - `Front-End`.
 
 ---
 
