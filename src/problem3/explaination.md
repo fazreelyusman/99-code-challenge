@@ -3,6 +3,7 @@
 ## 1. Incorrect Use of `any`
 ```ts
 const getPriority = (blockchain: any): number => { ... }
+```
 
 Using any removes TypeScript’s type safety.
 
