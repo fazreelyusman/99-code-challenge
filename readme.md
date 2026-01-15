@@ -1,10 +1,26 @@
-# 99Tech Code Challenge #1 #
+# 99Tech Code Challenge #1
 
-Note that if you fork this repository, your responses may be publicly linked to this repo.  
-Please submit your application along with the solutions attached or linked.   
+**Name:** Muhammad Fazreel Yusman bin Yusoff  
 
-It is important that you minimally attempt the problems, even if you do not arrive at a working solution.
+This repository contains my solutions for the 99Tech Front-End Code Challenge.
 
-## Submission ##
-You can either provide a link to an online repository, attach the solution in your application, or whichever method you prefer.
-We're cool as long as we can view your solution without any pain.
+---
+
+## 📁 Solutions Overview
+
+### Problem 1
+- **Description:** Single-file solution
+- **File Path:** /src/problem1/problem1.js
+
+---
+
+### Problem 2
+- **Description:** Application-based solution
+- **Folder Path:** /src/problem2
+- **Notes:** Further instructions, including setup and usage details, are provided inside the `problem2` folder.
+
+---
+
+### Problem 3
+- **Description:** Single-file solution
+- **File Path:** /src/problem3/problem3.tsx
