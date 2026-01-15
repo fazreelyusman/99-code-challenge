@@ -2,21 +2,24 @@
 
 ---
 
-## 1. Incorrect Use of `any`
+## 1. Missing Types
 
 ```ts
 const getPriority = (blockchain: any): number => { ... }
 ```
 
-### Issue:
-- Using `any` removes TypeScript type safety
+#### Issue: 
+- `any` usage defeats TypeScript
 - Allows invalid values without compile-time errors
 - Hides logical bugs
 
 #### Improvement:
 - Replace `any` with a union type or enum
+```ts
+type Blockchain = 'Osmosis' | 'Ethereum' | 'Arbitrum' | 'Zilliqa' | 'Neo';
+```
 
----
+
 
 ## 2. Missing Property in Interface
 
@@ -32,14 +35,14 @@ Later usage:
 balance.blockchain
 ```
 
-Issue:
+#### Issue:
 - `blockchain` is accessed but not declared
 - Leads to implicit `any` or runtime errors
 
-Improvement:
-- Explicitly define `blockchain` in the interface
+#### Improvement:
+- Define `blockchain` in the interface
 
----
+
 
 ## 3. Function Recreated on Every Render
 
@@ -47,29 +50,32 @@ Improvement:
 const getPriority = (...) => { ... }
 ```
 
-Issue:
+#### Issue:
 - Function recreated on each render
 - Reduces effectiveness of memoization
 
-Improvement:
+#### Improvement:
 - Move function outside component or use a constant lookup map
 
----
 
-## 4. Hard-Coded `switch` Statement
+
+## 4. Hard-Coded `switch` Logic
 
 ```ts
 switch (blockchain) { ... }
 ```
 
-Issue:
+#### Issue:
 - Not scalable
 - Hard to maintain and extend
 
-Improvement:
+#### Improvement:
 - Replace with a priority map object
+```ts
+const PRIORITY_MAP: Record<Blockchain, number>
+```
 
----
+
 
 ## 5. Undefined Variable (`lhsPriority`)
 
@@ -77,16 +83,16 @@ Improvement:
 if (lhsPriority > -99) {
 ```
 
-Issue:
+#### Issue:
 - Variable is not defined
 - Causes runtime crash
 
-Improvement:
+#### Improvement:
 - Use the correct variable name (`balancePriority`)
 
----
 
-## 6. Incorrect Filtering Logic
+
+## 6. Incorrect Filter Logic
 
 ```ts
 if (balance.amount <= 0) {
@@ -94,14 +100,17 @@ if (balance.amount <= 0) {
 }
 ```
 
-Issue:
+#### Issue:
 - Includes zero or negative balances
-- Likely unintended behavior
+- Usually wallets display positive balances
 
-Improvement:
-- Filter balances with amount greater than zero
+#### Improvement:
+- Filter balances with amount equal or greater than zero
+```ts
+balance.amount >= 0
+```
 
----
+
 
 ## 7. Repeated Priority Computation During Sort
 
@@ -110,14 +119,14 @@ getPriority(lhs.blockchain)
 getPriority(rhs.blockchain)
 ```
 
-Issue:
-- Called repeatedly during sorting
+#### Issue:
+- Called repeatedly during sort (`O(n log n)`).
 - Causes unnecessary computation
 
-Improvement:
+#### Improvement:
 - Compute priority once per balance before sorting
 
----
+
 
 ## 8. Incorrect `useMemo` Dependencies
 
@@ -125,14 +134,17 @@ Improvement:
 useMemo(() => { ... }, [balances, prices])
 ```
 
-Issue:
+#### Issue:
 - `prices` is not used inside the memo
 - Triggers unnecessary recomputation
 
-Improvement:
+#### Improvement:
 - Remove unused dependencies
+```ts
+[balances]
+```
 
----
+
 
 ## 9. Derived Data Not Memoized
 
@@ -140,14 +152,14 @@ Improvement:
 const formattedBalances = sortedBalances.map(...)
 ```
 
-Issue:
-- Recomputed on every render
+#### Issue:
+- Runs on every render
 - Fully derived from memoized data
 
-Improvement:
+#### Improvement:
 - Wrap derived data in `useMemo`
 
----
+
 
 ## 10. Wrong Data Source Used for Rendering
 
@@ -155,14 +167,14 @@ Improvement:
 sortedBalances.map((balance: FormattedWalletBalance) => ...)
 ```
 
-Issue:
+#### Issue:
 - Data does not include `formatted`
 - Type mismatch and runtime risk
 
-Improvement:
+#### Improvement:
 - Render from `formattedBalances`
 
----
+
 
 ## 11. Using Array Index as React Key
 
@@ -170,14 +182,14 @@ Improvement:
 key={index}
 ```
 
-Issue:
+#### Issue:
 - Breaks React reconciliation
 - Causes unnecessary re-renders
 
-Improvement:
-- Use a stable unique key such as `currency`
+#### Improvement:
+- Use a stable unique key such as `balance.currency`
 
----
+
 
 ## 12. Unnecessary Use of `React.FC`
 
@@ -185,15 +197,15 @@ Improvement:
 const WalletPage: React.FC<Props>
 ```
 
-Issue:
-- Implicitly includes `children`
+#### Issue:
+- Implicit `children`
 - Redundant typing
-- Discouraged in modern TypeScript React
+- No longer recommended by many TS teams
 
-Improvement:
+#### Improvement:
 - Type props directly in function parameters
 
----
+
 
 ## 13. Unused `children` Prop
 
@@ -201,14 +213,13 @@ Improvement:
 const { children, ...rest } = props;
 ```
 
-Issue:
+#### Issue:
 - `children` is never used
-- Dead code
 
-Improvement:
+#### Improvement:
 - Remove unused destructuring
 
----
+
 
 ## 14. Primitive Number Formatting
 
@@ -216,9 +227,9 @@ Improvement:
 balance.amount.toFixed()
 ```
 
-Issue:
-- Not locale-aware
-- Poor international user experience
+#### Issue:
+- Not locale awareness
+- Poor UX
 
-Improvement:
+#### Improvement:
 - Use `Intl.NumberFormat`

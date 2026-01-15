@@ -27,7 +27,7 @@ const WalletPage = ({ ...rest }: WalletPageProps) => {
   const sortedBalances = useMemo(() => {
     return balances
       .filter(
-        (b) => b.amount > 0 && PRIORITY_MAP[b.blockchain] !== undefined
+        (b) => b.amount >= 0 && PRIORITY_MAP[b.blockchain] !== undefined
       )
       .map((b) => ({
         ...b,

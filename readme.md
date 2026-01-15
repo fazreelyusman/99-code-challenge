@@ -21,4 +21,5 @@ This repository contains my solutions for the 99Tech Code Challenge - `Front-End
 
 ### Problem 3
 - **Description:** Single-file solution
-- **File Path:** /src/problem3/problem3.tsx
+- **File Path:** /src/problem3/problem3-refactored.tsx
+- **Notes:** Further explaination regarding refactor details is provided in `/src/problem3/refactor-details.md`.
