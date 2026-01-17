@@ -93,7 +93,7 @@ export default function SwapForm() {
             {/* FROM */}
             <div className="mb-4">
                 <label className="text-sm mb-1 block">From</label>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                     <input
                         type="number"
                         placeholder="0.0"
@@ -135,7 +135,7 @@ export default function SwapForm() {
             {/* TO */}
             <div className="mb-4">
                 <label className="text-sm mb-1 block">To</label>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                     <input
                         type="text"
                         disabled
