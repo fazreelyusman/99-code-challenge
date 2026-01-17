@@ -42,8 +42,8 @@ export default function TokenSelect({ value, onChange, tokens }: Props) {
             <button
                 type="button"
                 onClick={() => setOpen(!open)}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-lg
-                bg-bg border border-border hover:bg-muted"
+                className="w-full flex items-center gap-2 px-3 py-2
+                bg-transparent hover:bg-muted"
             >
                 {value ? (
                     <>

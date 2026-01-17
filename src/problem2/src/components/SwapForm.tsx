@@ -93,22 +93,29 @@ export default function SwapForm() {
             {/* FROM */}
             <div className="mb-4">
                 <label className="text-sm mb-1 block">From</label>
-                <div className="flex flex-col sm:flex-row gap-2">
-                    <input
-                        type="number"
-                        placeholder="0.0"
-                        value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                        className="flex-1 px-3 py-2 rounded-lg bg-bg border border-border focus:outline-none placeholder:text-placeholder"
-                    />
 
-                    <div className="relative flex items-center">
+                <div
+                    className="flex items-center rounded-lg border border-border bg-bg
+                    focus:outline-none"
+                >
+                    {/* Token prefix */}
+                    <div className="border-r border-border">
                         <TokenSelect
                             value={from}
                             onChange={setFrom}
                             tokens={tokens}
                         />
                     </div>
+
+                    {/* Amount input */}
+                    <input
+                        type="number"
+                        placeholder="0.0"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        className="flex-1 px-3 py-2 bg-transparent focus:outline-none
+                            placeholder:text-placeholder"
+                    />
                 </div>
             </div>
 
@@ -135,27 +142,34 @@ export default function SwapForm() {
             {/* TO */}
             <div className="mb-4">
                 <label className="text-sm mb-1 block">To</label>
-                <div className="flex flex-col sm:flex-row gap-2">
-                    <input
-                        type="text"
-                        disabled
-                        value={outputAmount}
-                        className="flex-1 px-3 py-2 rounded-lg bg-bg border border-border focus:outline-none cursor-not-allowed"
-                    />
 
-                    <div className="relative flex items-center">
+                <div
+                    className="flex items-center rounded-lg border border-border bg-bg
+                     focus:outline-none"
+                >
+                    {/* Token prefix */}
+                    <div className="border-r border-border">
                         <TokenSelect
                             value={to}
                             onChange={setTo}
                             tokens={tokens}
                         />
                     </div>
+
+                    {/* Amount input */}
+                    
+                    <input
+                        type="text"
+                        disabled
+                        value={outputAmount}
+                        className="flex-1 px-3 py-2 bg-transparent focus:outline-none cursor-not-allowed"
+                    />
                 </div>
             </div>
 
             {/* RATE */}
             {rate > 0 && !error && (
-                <p className="text-xs text-muted-foreground mb-3">
+                <p className="text-xs text-placeholder mb-3">
                     Rate: 1 {from} ≈ {rate.toFixed(6)} {to}
                 </p>
             )}
