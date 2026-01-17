@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* light mode */
+:root { 
+  --bg: #F3ECF7;
+  --hover: #ecccff;
+  --bg-image: url('/photos/bg-light.jpg');
+  --text: rgb(59, 60, 63);
+  --placeholder: rgba(59, 60, 63, 0.75);
+  --border: #a25fd8;
+  --glow: #104080;
+  --header: #4c117d;
+  --button: #a25fd8;
+}
+
+/* dark mode */
+[data-theme='dark'] {
+  --bg: #1A171C;
+  --hover: #f3ecf748; 
+  --bg-image: url('/photos/bg-dark.jpg');
+  --text: #e6eef8;
+  --placeholder: #e6eef8b9;
+  --border: #382f3d;
+  --glow: #2574DD;
+  --header: #ff3333ad;
+  --button: #ff333390;
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: var(--bg-image);
+  background-attachment: scroll;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Chrome, Safari, Edge */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Container with scroll */
+.scrollable {
+  overflow-y: auto;
+}
+/* Scrollbar width */
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+/* Track background */
+.scrollable::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-radius: 4px;
+  margin: 3px;
+}
+/* Thumb (the draggable part) */
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--button);
+  border-radius: 4px;
+  border: 3px solid var(--bg);
+  /* optional spacing */
+}

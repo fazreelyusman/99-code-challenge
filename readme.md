@@ -16,7 +16,7 @@ This repository contains my solutions for the 99Tech Code Challenge - `Front-End
 ### Problem 2
 - **Description:** Application-based solution
 - **Folder Path:** /src/problem2
-- **Notes:** Further instructions, including setup and usage details, are provided inside the `problem2` folder.
+- **Notes:** Further instructions, including setup and details, are provided inside the `problem2` folder.
 
 
 ### Problem 3
