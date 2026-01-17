@@ -40,7 +40,7 @@ npm run dev
 - Switch value between `FROM` value to `TO` value
 - Error boundary
 
-#### Error type
+#### Error cases
 - Negative number
 - Failed to load prices
 - Swapping within same token
