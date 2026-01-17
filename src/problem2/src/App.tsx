@@ -7,7 +7,7 @@ export default function App() {
     <div className="relative min-h-screen font-headline">
       <Header />
       <FrostedBackground />
-      <main className="relative z-10">
+      <main className="relative z-10 px-10">
         <SwapForm />
       </main>
     </div>

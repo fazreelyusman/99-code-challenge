@@ -119,7 +119,7 @@ export default function SwapForm() {
                     onClick={handleSwitch}
                     disabled={!from || !to}
                     className={`
-                        h-10 w-10 rounded-full flex items-center justify-center
+                        h-10 w-10 rounded-full flex items-center justify-center font-body
                         border border-border bg-button text-white
                         hover:bg-muted hover:scale-110 active:scale-100
                         transition-transform duration-300
@@ -140,7 +140,7 @@ export default function SwapForm() {
                         type="text"
                         disabled
                         value={outputAmount}
-                        className="flex-1 px-3 py-2 rounded-lg bg-bg border border-border text-placeholder focus:outline-none cursor-not-allowed"
+                        className="flex-1 px-3 py-2 rounded-lg bg-bg border border-border focus:outline-none cursor-not-allowed"
                     />
 
                     <div className="relative flex items-center">
